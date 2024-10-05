@@ -309,17 +309,25 @@ children: [
     );
   }
 
+
+
+
+
+
+
+  
+
   Widget _buildMultiSelectRow() {
     return Container(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(4.0),
       color: Colors.grey[200],
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Row(
-            children: const [
+            children:  [
               Icon(Icons.radio_button_checked, color: Colors.pink),
-              SizedBox(width: 8),
+              SizedBox(width: 1.w),
               Text('(0)', style: TextStyle(color: Colors.black)), // Dynamic selection count
             ],
           ),
@@ -329,10 +337,10 @@ children: [
                 onPressed: () {
                   controller.toggleMultiSelect(); // Close the multi-select row
                 },
-                icon: const Icon(Icons.message, color: Colors.pink, size: 13),
+                icon:  Icon(Icons.message, color: Colors.pink, size: 13.sp),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                padding: const EdgeInsets.symmetric(horizontal: 1.0),
                 child: ElevatedButton(
                   onPressed: () {
                     // Handle "Assign to AI" action
@@ -343,14 +351,15 @@ children: [
                       borderRadius: BorderRadius.circular(20),
                     ),
                   ),
-                  child: const Text(
+                  child:  Text(
                     'Assign to AI',
-                    style: TextStyle(color: Colors.white, fontSize: 8),
+                    style: TextStyle(color: Colors.white, fontSize: 6.sp),
                   ),
                 ),
               ),
+              
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                padding: const EdgeInsets.symmetric(horizontal: 2.0),
                 child: ElevatedButton(
                   onPressed: () {
                     // Handle "Assign to Team" action
@@ -362,8 +371,8 @@ children: [
                     ),
                   ),
                   child: Row(
-                    children: const [
-                      Text('Assign to Team', style: TextStyle(color: Colors.white, fontSize: 8)),
+                    children:  [
+                      Text('Assign to Team', style: TextStyle(color: Colors.white, fontSize: 5.sp)),
                       Icon(Icons.arrow_drop_down, color: Colors.white),
                     ],
                   ),
@@ -373,7 +382,7 @@ children: [
                 onPressed: () {
                   controller.toggleMultiSelect(); // Close the multi-select row
                 },
-                icon: const Icon(Icons.close, color: Colors.pink, size: 13),
+                icon:  Icon(Icons.close, color: Colors.pink, size: 13.sp),
               ),
             ],
           ),

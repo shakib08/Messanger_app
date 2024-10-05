@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
 
@@ -58,98 +59,120 @@ class ChatScreen extends GetView<ChatingController> {
 
 
 PreferredSizeWidget _buildCustomAppBar(BuildContext context) {
-  return AppBar(
-    backgroundColor: Colors.white,
-    elevation: 0,
-    leading: IconButton(
-      icon: const Icon(Icons.arrow_back, color: Colors.black),
-      onPressed: () {
-            Get.toNamed('/chatting-list');   // Handle back navigation
-      },
-    ),
-    title: Row(
-      children: [
-        // Profile Picture and Name
-        CircleAvatar(
-          radius: 20,
-          backgroundImage: AssetImage('assets/images/user_avatar.png'), // Add your image path here
-        ),
-        const SizedBox(width: 8), // Reduced spacing between avatar and text
-        const Expanded(
-          child: Text(
-            'Micheal David',
-            style: TextStyle(
-              color: Colors.black,
-              fontWeight: FontWeight.bold,
-              overflow: TextOverflow.ellipsis, // Ensure text doesn't overflow
-            ),
+
+
+
+
+
+
+  return 
+  
+  AppBar(
+  backgroundColor: Colors.white,
+  elevation: 0,
+  leading: IconButton(
+    icon: const Icon(Icons.arrow_back, color: Colors.black),
+    onPressed: () {
+      Get.toNamed('/chatting-list'); // Handle back navigation
+    },
+  ),
+  title: Row(
+    children: [
+      // Profile Picture and Name
+      CircleAvatar(
+        radius: MediaQuery.of(context).size.height * 0.025, // Responsive radius based on screen height
+        backgroundImage: const AssetImage('assets/1.png'), // Add your image path here
+      ),
+      SizedBox(width: 8), // Small fixed width for better spacing control
+      Expanded(
+        child: Text(
+          'Micheal David',
+          style:  TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+            overflow: TextOverflow.ellipsis, 
+            fontSize: 12// Ensure text doesn't overflow
           ),
         ),
-      ],
-    ),
-    actions: [
-      // "Assign to AI" button
-      Flexible(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 4), // Reduced padding
+      ),
+    ],
+  ),
+  actions: [
+    // "Assign to AI" button
+    Flexible(
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 4.w), // Reduced padding with flutter_screenutil
+        child: SizedBox(
+          width: MediaQuery.of(context).size.width * 0.2, // Reduced button width
           child: TextButton(
             onPressed: () {
               // Handle Assign to AI action
             },
             style: TextButton.styleFrom(
               backgroundColor: Colors.pink,
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8), // Slightly adjusted padding
+              padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 4.h), // Slightly reduced padding
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),
               ),
             ),
             child: const Text(
               'Assign to AI',
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(color: Colors.white, fontSize: 10), // Adjusted font size
               overflow: TextOverflow.ellipsis, // Prevent text overflow
             ),
           ),
         ),
       ),
-      const SizedBox(width: 4), // Reduced space between buttons
+    ),
+    SizedBox(width: 4.w), // Reduced space between buttons
 
-      // "Assign to Team" button with reduced width
-      Flexible(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 4), // Reduced padding
-          child: SizedBox(
-            width: 120, // Set a fixed width to reduce the size
-            child: TextButton(
-              onPressed: () {
-                // Handle Assign to Team action
-              },
-              style: TextButton.styleFrom(
-                backgroundColor: Colors.white,
-                side: const BorderSide(color: Colors.grey),
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8), // Adjusted padding
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20),
-                ),
+    // "Assign to Team" button with reduced width
+    Flexible(
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 4.w), // Reduced padding
+        child: SizedBox(
+          width: MediaQuery.of(context).size.width * 0.25, // Reduced button width
+          child: TextButton(
+            onPressed: () {
+              // Handle Assign to Team action
+            },
+            style: TextButton.styleFrom(
+              backgroundColor: Colors.white,
+              side: const BorderSide(color: Colors.grey),
+              padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 4.h), // Slightly reduced padding
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
               ),
-              child: Row(
-                children: const [
-                  Expanded(
-                    child: Text(
-                      'Assign to Team',
-                      style: TextStyle(color: Colors.black),
-                      overflow: TextOverflow.ellipsis, // Prevent text overflow
-                    ),
+            ),
+            child: Row(
+              children: const [
+                Expanded(
+                  child: Text(
+                    'Assign to Team',
+                    style: TextStyle(color: Colors.black, fontSize: 10), // Adjusted font size
+                    overflow: TextOverflow.ellipsis, // Prevent text overflow
                   ),
-                  Icon(Icons.arrow_drop_down, color: Colors.black),
-                ],
-              ),
+                ),
+                Icon(Icons.arrow_drop_down, color: Colors.black, size: 18), // Adjusted icon size
+              ],
             ),
           ),
         ),
       ),
-      const SizedBox(width: 8), // Reduced final padding
-    ],
-  );
+    ),
+    SizedBox(width: 8.w), // Reduced final padding
+  ],
+);
+
+
+
+
+
+
+
+
+
+
 }
 
 
@@ -176,7 +199,7 @@ PreferredSizeWidget _buildCustomAppBar(BuildContext context) {
           if (!isMe) // Show avatar for the other user on the left
             const CircleAvatar(
               radius: 20,
-              backgroundImage: AssetImage('assets/images/user_avatar.png'), // Add your image path here
+              backgroundImage: AssetImage('assets/david.png'), // Add your image path here
             ),
           if (!isMe) const SizedBox(width: 10),
           Flexible(
@@ -209,7 +232,7 @@ PreferredSizeWidget _buildCustomAppBar(BuildContext context) {
           if (isMe) // Show avatar for the current user on the right
             const CircleAvatar(
               radius: 20,
-              backgroundImage: AssetImage('assets/images/my_avatar.png'), // Add your image path here
+              backgroundImage: AssetImage('assets/1.png'), // Add your image path here
             ),
         ],
       ),
